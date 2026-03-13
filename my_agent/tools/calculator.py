@@ -1,60 +1,35 @@
 import math
 
-def calculator(operation: str, a: float, b: float | None = None) -> str:
+def calculator(operation: str, a: float, b: float) -> str:
     """
-    Perform numeric calculations.
-
-    Use this tool whenever a question involves arithmetic or numeric computation.
-
-    Supported operations:
-    - add
-    - subtract
-    - multiply
-    - divide
-    - power
-    - sqrt
-    - modulo
+    Perform arithmetic calculations.
 
     Args:
-        operation: The calculation to perform.
-        a: First number.
-        b: Second number (not required for sqrt).
+        operation: add, subtract, multiply, divide, power, sqrt, modulo
+        a: first number
+        b: second number (use 0 if not needed)
 
     Returns:
-        The numeric result as a string.
-
-    Raises:
-        ValueError: If the operation is unsupported or invalid.
+        The numeric result.
     """
 
     operation = operation.lower()
 
-    if operation in ["add", "sum", "+"]:
+    if operation == "add":
         result = a + b
-
-    elif operation in ["subtract", "minus", "-"]:
+    elif operation == "subtract":
         result = a - b
-
-    elif operation in ["multiply", "times", "*"]:
+    elif operation == "multiply":
         result = a * b
-
-    elif operation in ["divide", "/"]:
-        if b == 0:
-            raise ValueError("Division by zero is not allowed.")
+    elif operation == "divide":
         result = a / b
-
-    elif operation in ["power", "exp", "^"]:
+    elif operation == "power":
         result = a ** b
-
-    elif operation in ["sqrt", "square_root"]:
-        if a < 0:
-            raise ValueError("Cannot take square root of negative number.")
+    elif operation == "sqrt":
         result = math.sqrt(a)
-
-    elif operation in ["mod", "modulo", "%"]:
+    elif operation == "modulo":
         result = a % b
-
     else:
-        raise ValueError(f"Unsupported operation: {operation}")
+        raise ValueError("Unsupported operation")
 
     return str(result)
