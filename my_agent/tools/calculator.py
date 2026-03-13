@@ -2,45 +2,38 @@ import math
 
 def calculator(operation: str, a: float, b: float) -> str:
     """
-    Use this tool only for arithmetic and numeric calculations.
+    Perform numeric calculations.
 
     Supported operations:
     - add
     - subtract
     - multiply
     - divide
-    - power
-    - sqrt
+    - power (a raised to the power b)
+    - sqrt (square root of a, ignore b)
     - modulo
 
-    Args:
-        operation: The arithmetic operation to perform.
-        a: The first number.
-        b: The second number. Use 0 if not needed.
-
-    Returns:
-        The numeric result as a string.
-
-    Do not use this tool for language, translation, grammar, logic, reading, or file-analysis tasks.
+    Use this tool whenever a question involves arithmetic or numeric computation.
+    Always return the numeric result.
     """
 
-    operation = operation.lower()
+    operation = operation.lower().strip()
 
-    if operation == "add":
+    if operation in ["add", "+", "sum"]:
         result = a + b
-    elif operation == "subtract":
+    elif operation in ["subtract", "-", "minus"]:
         result = a - b
-    elif operation == "multiply":
+    elif operation in ["multiply", "*", "times"]:
         result = a * b
-    elif operation == "divide":
+    elif operation in ["divide", "/", "division"]:
         result = a / b
-    elif operation == "power":
+    elif operation in ["power", "exp", "^", "exponent", "raised_to_power"]:
         result = a ** b
-    elif operation == "sqrt":
+    elif operation in ["sqrt", "square_root"]:
         result = math.sqrt(a)
-    elif operation == "modulo":
+    elif operation in ["modulo", "mod", "%"]:
         result = a % b
     else:
-        raise ValueError("Unsupported operation")
+        raise ValueError(f"Unsupported operation: {operation}")
 
     return str(result)
